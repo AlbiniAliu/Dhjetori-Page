@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/ui/reveal";
+
 const columns = [
   {
     title: "Genres",
@@ -19,13 +21,18 @@ export function CraftSection() {
   return (
     <section className="mx-auto w-full max-w-[1600px] px-6 py-14 sm:px-10 lg:px-16 lg:py-24">
       <div className="mx-auto max-w-[1200px]">
-        <h2 className="text-center font-display text-[3.5rem] font-semibold uppercase italic leading-none tracking-[-0.06em] text-[var(--color-foreground)] sm:text-[4.8rem] lg:text-[5.4rem]">
-          Sound &amp; Craft
-        </h2>
+        <Reveal className="reveal reveal-rise">
+          <h2 className="text-center font-display text-[3.5rem] font-semibold uppercase italic leading-none tracking-[-0.06em] text-[var(--color-foreground)] sm:text-[4.8rem] lg:text-[5.4rem]">
+            Sound &amp; Craft
+          </h2>
+        </Reveal>
 
         <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-18">
-          {columns.map((column) => (
-            <div key={column.title}>
+          {columns.map((column, index) => (
+            <Reveal
+              key={column.title}
+              className={index === 0 ? "reveal reveal-sweep delay-1" : "reveal reveal-sweep delay-2"}
+            >
               <div className="border-b border-[var(--color-rule)] pb-3">
                 <p className="text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-[var(--color-muted)]">
                   {column.title}
@@ -43,7 +50,7 @@ export function CraftSection() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
