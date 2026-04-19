@@ -65,10 +65,11 @@ export function HeroSection() {
               <span className="hero-sound-line hero-sound-line--2" />
               <span className="hero-sound-line hero-sound-line--3" />
             </div>
-            <div
-              aria-hidden="true"
-              className="rounded-image-panel absolute -inset-3 -z-10 bg-[linear-gradient(145deg,_rgba(232,93,28,0.2),_transparent_42%,_rgba(12,10,9,0.08))] opacity-90 blur-2xl sm:-inset-5"
-            />
+            <div aria-hidden="true" className="pointer-events-none absolute -inset-7 -z-10">
+              <span className="hero-wave-orbit hero-wave-orbit--1" />
+              <span className="hero-wave-orbit hero-wave-orbit--2" />
+              <span className="hero-wave-orbit hero-wave-orbit--3" />
+            </div>
 
             <div className="rounded-image-panel relative h-[28rem] w-full overflow-hidden bg-[var(--color-panel)] shadow-[0_30px_70px_rgba(0,0,0,0.2),var(--shadow-glow)] ring-1 ring-[rgba(255,255,255,0.12)] sm:h-[38rem] lg:h-[44rem] xl:h-[46rem]">
               <Image

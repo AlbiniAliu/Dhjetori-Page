@@ -16,6 +16,11 @@ export function BioSection() {
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(320px,0.96fr)_minmax(0,1.04fr)] lg:gap-16">
         <div className="relative">
           <Reveal className="reveal reveal-zoom rounded-image-panel">
+            <div aria-hidden="true" className="pointer-events-none absolute -inset-6 -z-10">
+              <span className="hero-wave-orbit hero-wave-orbit--dark hero-wave-orbit--1" />
+              <span className="hero-wave-orbit hero-wave-orbit--dark hero-wave-orbit--2" />
+              <span className="hero-wave-orbit hero-wave-orbit--dark hero-wave-orbit--3" />
+            </div>
             <div className="rounded-image-panel relative h-[28rem] w-full overflow-hidden bg-[var(--color-panel)] shadow-[0_28px_60px_rgba(0,0,0,0.18),var(--shadow-glow)] ring-1 ring-[rgba(255,255,255,0.08)] sm:h-[36rem] lg:h-[42rem]">
               <Image
                 src={PUBLIC_IMAGES.cover}
