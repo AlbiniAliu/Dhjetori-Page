@@ -129,23 +129,23 @@ body {
 }
 
 .delay-1 {
-  animation-delay: 0.08s;
+  transition-delay: 0.08s;
 }
 
 .delay-2 {
-  animation-delay: 0.16s;
+  transition-delay: 0.16s;
 }
 
 .delay-3 {
-  animation-delay: 0.24s;
+  transition-delay: 0.24s;
 }
 
 .delay-4 {
-  animation-delay: 0.32s;
+  transition-delay: 0.32s;
 }
 
 .delay-5 {
-  animation-delay: 0.4s;
+  transition-delay: 0.4s;
 }
 
 .rounded-image-panel {

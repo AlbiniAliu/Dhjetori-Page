@@ -119,11 +119,11 @@ export function MediaSection() {
                 >
                   <div className="rounded-image-panel relative flex min-h-[14rem] items-center justify-center overflow-hidden bg-[var(--color-panel)] text-white shadow-[0_24px_50px_rgba(0,0,0,0.16)] sm:min-h-[18rem]">
                     <Image
-                      src={PUBLIC_IMAGES.about}
+                      src={index === 0 ? PUBLIC_IMAGES.about : "/second_picture.jpg"}
                       alt={`Dhjetori archive portrait ${item}`}
                       fill
                       sizes="(max-width: 640px) 100vw, 50vw"
-                      className="rounded-image-panel object-cover"
+                      className="rounded-image-panel object-contain"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(255,255,255,0.12),_transparent_18%),linear-gradient(180deg,_rgba(0,0,0,0.02),_rgba(0,0,0,0.22))]" />
                   </div>
@@ -133,16 +133,37 @@ export function MediaSection() {
           </div>
 
           <Reveal className="reveal reveal-rise delay-3">
-            <aside className="rounded-[1.6rem] border border-[var(--color-rule)] bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] backdrop-blur-md sm:p-7">
-              <h3 className="text-center font-display text-[2.9rem] font-semibold uppercase italic leading-[0.85] tracking-[-0.06em] text-[var(--color-foreground)] sm:text-[3.4rem]">
+            <aside className="mt-32 rounded-[1.6rem] border border-[var(--color-rule)] bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] sm:p-7 sm:mt-35" style={{ backfaceVisibility: "hidden", WebkitFontSmoothing: "antialiased" }}>
+              <h3 className="text-center font-display text-[1.6rem] font-semibold uppercase italic leading-tight tracking-[-0.02em] text-[var(--color-foreground)] sm:text-[1.8rem]">
                 Discography
               </h3>
 
               <div className="mt-6 grid grid-cols-3 gap-3">
-                {releases.map((release) => (
+                {releases.map((release, index) => (
                   <div key={release} className="space-y-2">
-                    <div className="flex aspect-square items-center justify-center rounded-[1rem] bg-[var(--color-panel)] text-white shadow-md ring-1 ring-white/10 transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                      <ImageIcon />
+                    <div className="relative aspect-square rounded-[1rem] bg-[var(--color-panel)] text-white shadow-md ring-1 ring-white/10 transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg overflow-hidden flex items-center justify-center">
+                      {index === 0 ? (
+                        <Image
+                          src="/first_picture.jpg"
+                          alt={release}
+                          fill
+                          className="object-contain"
+                        />
+                      ) : index === 1 ? (
+                        <Image
+                          src="/second_picture.jpg"
+                          alt={release}
+                          fill
+                          className="object-contain"
+                        />
+                      ) : (
+                        <Image
+                          src="/fourth_picture.jpg"
+                          alt={release}
+                          fill
+                          className="object-contain"
+                        />
+                      )}
                     </div>
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)]">
                       {release}
