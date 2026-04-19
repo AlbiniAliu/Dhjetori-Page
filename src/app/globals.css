@@ -17,8 +17,8 @@
   --shadow-soft: 0 24px 48px rgba(12, 10, 9, 0.08);
   --shadow-lift: 0 32px 64px rgba(12, 10, 9, 0.12);
   --shadow-glow: 0 0 80px rgba(232, 93, 28, 0.12);
-  --font-sans: var(--font-body), "Segoe UI", system-ui, sans-serif;
-  --font-display: var(--font-headline), "Georgia", "Times New Roman", serif;
+  --font-sans: "Aptos", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-display: "Bodoni MT", "Didot", "Times New Roman", serif;
 }
 
 @theme inline {
@@ -33,6 +33,7 @@
 }
 
 html {
+  scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
   background-color: var(--background);
   background-image:
@@ -151,11 +152,58 @@ body {
   border-radius: 1.75rem;
 }
 
+@keyframes sound-drift {
+  0% {
+    opacity: 0.18;
+    transform: translate3d(0, 18px, 0) scaleY(0.92);
+  }
+
+  20% {
+    opacity: 0.72;
+  }
+
+  50% {
+    opacity: 0.48;
+    transform: translate3d(10px, 0, 0) scaleY(1.04);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(22px, -18px, 0) scaleY(1.1);
+  }
+}
+
+.hero-sound-line {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 320' fill='none'%3E%3Cpath d='M96 14C56 40 54 92 95 120' stroke='%23e85d1c' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M80 40C48 62 48 108 80 130' stroke='%23e85d1c' stroke-width='2.4' stroke-linecap='round' opacity='0.78'/%3E%3Cpath d='M64 66C42 82 42 118 64 134' stroke='%23e85d1c' stroke-width='2.2' stroke-linecap='round' opacity='0.58'/%3E%3Cpath d='M96 178C56 204 54 256 95 284' stroke='%23e85d1c' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M80 204C48 226 48 272 80 294' stroke='%23e85d1c' stroke-width='2.4' stroke-linecap='round' opacity='0.78'/%3E%3Cpath d='M64 230C42 246 42 282 64 298' stroke='%23e85d1c' stroke-width='2.2' stroke-linecap='round' opacity='0.58'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 0 18px rgba(232, 93, 28, 0.18));
+  animation: sound-drift 4.8s linear infinite;
+}
+
+.hero-sound-line--1 {
+  animation-delay: 0s;
+}
+
+.hero-sound-line--2 {
+  animation-delay: 1.2s;
+  opacity: 0;
+}
+
+.hero-sound-line--3 {
+  animation-delay: 2.4s;
+  opacity: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .motion-rise,
   .motion-zoom,
   .motion-sweep,
-  .reveal {
+  .reveal,
+  .hero-sound-line {
     opacity: 1;
     animation: none;
     transition: none;
