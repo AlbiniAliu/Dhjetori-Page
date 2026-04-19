@@ -1,16 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f2ee;
-  --foreground: #101010;
-  --color-accent: #f15b1a;
-  --color-ghost: rgba(20, 20, 20, 0.07);
-  --color-panel: #030303;
-  --color-copy: rgba(16, 16, 16, 0.82);
-  --color-muted: rgba(16, 16, 16, 0.56);
-  --color-rule: rgba(16, 16, 16, 0.26);
-  --font-sans: "Aptos", "Segoe UI", "Helvetica Neue", sans-serif;
-  --font-display: "Bodoni MT", "Didot", "Times New Roman", serif;
+  --nav-height: 4rem;
+  --background: #f0ebe4;
+  --foreground: #0c0a09;
+  --color-accent: #e85d1c;
+  --color-accent-strong: #c2410c;
+  --color-accent-soft: rgba(232, 93, 28, 0.14);
+  --color-ghost: rgba(20, 20, 20, 0.06);
+  --color-panel: #0a0908;
+  --color-copy: rgba(12, 10, 9, 0.84);
+  --color-muted: rgba(12, 10, 9, 0.52);
+  --color-rule: rgba(12, 10, 9, 0.14);
+  --color-surface: rgba(255, 255, 255, 0.55);
+  --color-surface-elevated: rgba(255, 255, 255, 0.78);
+  --shadow-soft: 0 24px 48px rgba(12, 10, 9, 0.08);
+  --shadow-lift: 0 32px 64px rgba(12, 10, 9, 0.12);
+  --shadow-glow: 0 0 80px rgba(232, 93, 28, 0.12);
+  --font-sans: var(--font-body), "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--font-headline), "Georgia", "Times New Roman", serif;
 }
 
 @theme inline {
@@ -25,13 +33,19 @@
 }
 
 html {
-  background: var(--background);
+  scroll-padding-top: var(--nav-height);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 0% -20%, rgba(232, 93, 28, 0.09), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 100% 0%, rgba(12, 10, 9, 0.04), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255, 255, 255, 0.5), transparent 45%);
 }
 
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
 }
 
 @keyframes rise-in {
@@ -155,5 +169,10 @@ a {
 }
 
 ::selection {
-  background: rgba(241, 91, 26, 0.2);
+  background: rgba(232, 93, 28, 0.22);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }

@@ -36,11 +36,10 @@ export function Reveal({ children, className = "" }: RevealProps) {
     return () => observer.disconnect();
   }, []);
 
+  const rootClass = [className, isVisible ? "is-visible" : ""].filter(Boolean).join(" ");
+
   return (
-    <div
-      ref={ref}
-      className={`${className} ${isVisible ? "is-visible" : ""}`.trim()}
-    >
+    <div ref={ref} className={rootClass}>
       {children}
     </div>
   );

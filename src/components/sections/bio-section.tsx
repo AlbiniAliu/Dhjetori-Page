@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
+import { PUBLIC_IMAGES } from "@/lib/public-images";
 
 const detailItems = [
   { label: "Genre", value: "Rock / Alternative" },
@@ -8,15 +9,19 @@ const detailItems = [
 
 export function BioSection() {
   return (
-    <section className="mx-auto w-full max-w-[1600px] px-6 py-14 sm:px-10 lg:px-16 lg:py-24">
+    <section
+      id="bio"
+      className="mx-auto w-full max-w-[1600px] px-6 py-14 sm:px-10 lg:px-16 lg:py-24"
+    >
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(320px,0.96fr)_minmax(0,1.04fr)] lg:gap-16">
         <div className="relative">
           <Reveal className="reveal reveal-zoom rounded-image-panel">
-            <div className="rounded-image-panel relative h-[28rem] w-full overflow-hidden bg-[var(--color-panel)] shadow-[0_28px_60px_rgba(0,0,0,0.16)] sm:h-[36rem] lg:h-[42rem]">
+            <div className="rounded-image-panel relative h-[28rem] w-full overflow-hidden bg-[var(--color-panel)] shadow-[0_28px_60px_rgba(0,0,0,0.18),var(--shadow-glow)] ring-1 ring-[rgba(255,255,255,0.08)] sm:h-[36rem] lg:h-[42rem]">
               <Image
-                src="/cover.jpg"
+                src={PUBLIC_IMAGES.cover}
                 alt="Dhjetori cover portrait"
                 fill
+                sizes="(max-width: 1024px) 100vw, 46vw"
                 className="rounded-image-panel object-cover"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(255,255,255,0.08),_transparent_18%),linear-gradient(180deg,_rgba(0,0,0,0.02),_rgba(0,0,0,0.18))]" />
@@ -40,11 +45,11 @@ export function BioSection() {
           </Reveal>
 
           <Reveal className="reveal reveal-sweep delay-2">
-            <div className="mt-12 grid gap-8 border-t border-[var(--color-rule)] pt-6 sm:grid-cols-2">
+            <div className="mt-12 grid gap-6 border-t border-[var(--color-rule)] pt-8 sm:grid-cols-2 sm:gap-8">
               {detailItems.map((item) => (
                 <div
                   key={item.label}
-                  className="border-t border-[var(--color-rule)] pt-4 sm:border-t-0 sm:pt-0"
+                  className="rounded-2xl border border-[var(--color-rule)] bg-[var(--color-surface)] px-5 py-5 backdrop-blur-sm transition-shadow duration-300 hover:shadow-[var(--shadow-soft)] sm:px-6 sm:py-6"
                 >
                   <p className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
                     {item.label}

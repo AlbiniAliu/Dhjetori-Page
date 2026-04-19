@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
+import { PUBLIC_IMAGES } from "@/lib/public-images";
 
 const releases = ["Static Overdrive", "Afterglow", "Night Signal"];
 
@@ -25,12 +26,15 @@ function ImageIcon() {
 
 export function MediaSection() {
   return (
-    <section className="mx-auto w-full max-w-[1600px] px-6 py-14 sm:px-10 lg:px-16 lg:py-24">
+    <section
+      id="media"
+      className="mx-auto w-full max-w-[1600px] px-6 py-14 sm:px-10 lg:px-16 lg:py-24"
+    >
       <Reveal className="reveal reveal-rise">
-        <div className="border border-[var(--color-rule)] bg-[rgba(255,255,255,0.28)] px-5 py-6 sm:px-8">
+        <div className="overflow-hidden rounded-[1.75rem] border border-[var(--color-rule)] bg-[var(--color-surface-elevated)] px-5 py-7 shadow-[var(--shadow-soft)] backdrop-blur-md sm:px-8 sm:py-8">
           <div className="grid items-center gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
             <div className="flex items-center gap-5">
-              <div className="flex h-18 w-18 items-center justify-center bg-[var(--color-panel)] text-white sm:h-20 sm:w-20">
+              <div className="flex h-18 w-18 items-center justify-center rounded-2xl bg-[var(--color-panel)] text-white shadow-inner ring-1 ring-white/10 sm:h-20 sm:w-20">
                 <ImageIcon />
               </div>
 
@@ -62,7 +66,7 @@ export function MediaSection() {
                 <button
                   type="button"
                   aria-label="Pause"
-                  className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-foreground)] text-[var(--background)] transition-transform duration-200 hover:scale-[1.04]"
+                  className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-foreground)] text-[var(--background)] shadow-[0_10px_28px_rgba(12,10,9,0.25)] ring-2 ring-[var(--color-accent-soft)] transition-transform duration-200 hover:scale-[1.04] hover:bg-[var(--color-accent)]"
                 >
                   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor">
                     <rect x="7" y="6" width="3.5" height="12" rx="1" />
@@ -84,8 +88,8 @@ export function MediaSection() {
 
               <div className="grid items-center gap-3 sm:grid-cols-[54px_minmax(0,1fr)_54px]">
                 <span className="text-sm text-[var(--color-muted)]">01:24</span>
-                <div className="h-[3px] overflow-hidden bg-[rgba(16,16,16,0.35)]">
-                  <div className="h-full w-[33%] bg-[var(--color-accent)]" />
+                <div className="h-[4px] overflow-hidden rounded-full bg-[rgba(12,10,9,0.12)] ring-1 ring-inset ring-[rgba(12,10,9,0.06)]">
+                  <div className="h-full w-[33%] rounded-full bg-[linear-gradient(90deg,_var(--color-accent-strong),_var(--color-accent))] shadow-[0_0_12px_rgba(232,93,28,0.45)]" />
                 </div>
                 <span className="text-right text-sm text-[var(--color-muted)]">04:12</span>
               </div>
@@ -96,7 +100,7 @@ export function MediaSection() {
 
       <div className="mt-20">
         <Reveal className="reveal reveal-rise delay-1">
-          <div className="h-8 w-full bg-[var(--color-accent)]" />
+          <div className="h-2 w-full rounded-full bg-[linear-gradient(90deg,_transparent,_var(--color-accent),_var(--color-accent-strong),_var(--color-accent),_transparent)] opacity-90 shadow-[0_0_24px_rgba(232,93,28,0.35)]" />
         </Reveal>
 
         <div className="grid items-start gap-10 pt-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-14">
@@ -115,9 +119,10 @@ export function MediaSection() {
                 >
                   <div className="rounded-image-panel relative flex min-h-[14rem] items-center justify-center overflow-hidden bg-[var(--color-panel)] text-white shadow-[0_24px_50px_rgba(0,0,0,0.16)] sm:min-h-[18rem]">
                     <Image
-                      src="/about.jpg"
+                      src={PUBLIC_IMAGES.about}
                       alt={`Dhjetori archive portrait ${item}`}
                       fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
                       className="rounded-image-panel object-cover"
                     />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(255,255,255,0.12),_transparent_18%),linear-gradient(180deg,_rgba(0,0,0,0.02),_rgba(0,0,0,0.22))]" />
@@ -128,7 +133,7 @@ export function MediaSection() {
           </div>
 
           <Reveal className="reveal reveal-rise delay-3">
-            <aside className="rounded-[1.6rem] border border-[var(--color-rule)] bg-[rgba(255,255,255,0.45)] p-5 shadow-[0_18px_35px_rgba(0,0,0,0.08)]">
+            <aside className="rounded-[1.6rem] border border-[var(--color-rule)] bg-[var(--color-surface-elevated)] p-6 shadow-[var(--shadow-soft)] backdrop-blur-md sm:p-7">
               <h3 className="text-center font-display text-[2.9rem] font-semibold uppercase italic leading-[0.85] tracking-[-0.06em] text-[var(--color-foreground)] sm:text-[3.4rem]">
                 Discography
               </h3>
@@ -136,7 +141,7 @@ export function MediaSection() {
               <div className="mt-6 grid grid-cols-3 gap-3">
                 {releases.map((release) => (
                   <div key={release} className="space-y-2">
-                    <div className="flex aspect-square items-center justify-center rounded-[1rem] bg-[var(--color-panel)] text-white">
+                    <div className="flex aspect-square items-center justify-center rounded-[1rem] bg-[var(--color-panel)] text-white shadow-md ring-1 ring-white/10 transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                       <ImageIcon />
                     </div>
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)]">
